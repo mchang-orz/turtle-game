@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://be2ole0t1g7ij"]
+
+[ext_resource type="Script" uid="uid://bcv7tko4nh3ga" path="res://scripts/player_hand.gd" id="1_4moqc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_707nr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4moqc"]
+
+[node name="PlayerHand" type="AnimatableBody3D"]
+script = ExtResource("1_4moqc")
+
+[node name="Hand" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_707nr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4moqc")

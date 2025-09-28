@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://drnxos7dpg5vf"]
+
+[ext_resource type="Script" uid="uid://det1iv5rjej2s" path="res://scripts/enemy_hand.gd" id="1_lpach"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0qctg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lpach"]
+
+[node name="EnemyHand" type="AnimatableBody3D"]
+script = ExtResource("1_lpach")
+
+[node name="Hand" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_0qctg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lpach")

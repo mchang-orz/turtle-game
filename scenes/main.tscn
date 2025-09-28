@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmfcmeuj0ss8r"]
+
+[ext_resource type="PackedScene" uid="uid://d1p1htbguxo5j" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://berhb1beva3ge" path="res://scripts/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://be2ole0t1g7ij" path="res://scenes/player_hand.tscn" id="2_0wfyh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgp6g"]
+size = Vector3(15, 1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wfyh"]
+albedo_color = Color(0.267061, 0.126462, 0.164232, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5qli"]
+size = Vector3(15, 1, 15)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_sugp2")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_sgp6g")
+surface_material_override/0 = SubResource("StandardMaterial3D_0wfyh")
+
+[node name="GroundCollision" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_o5qli")
+
+[node name="WorldLighting" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.372745, 0.927934, 0, -0.927934, 0.372745, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.897266, 5.22673)
+
+[node name="PlayerHand" parent="." instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41119, 1.20306, 2.83254)
+
+[node name="PlayerHand2" parent="." instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67312, 1.24862, 2.72641)
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
